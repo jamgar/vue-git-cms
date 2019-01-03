@@ -1,7 +1,15 @@
 import Vue from 'vue'
-import App from './App.vue'
+
 import router from './router'
-import store from './store'
+import { store } from './store/store'
+
+import App from './App.vue'
+import Default from './views/layouts/Default'
+import Admin from './views/layouts/Admin'
+
+
+Vue.component('default-layout', Default)
+Vue.component('admin-layout', Admin)
 
 Vue.config.productionTip = false
 
