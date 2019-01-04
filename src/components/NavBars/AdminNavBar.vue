@@ -3,8 +3,8 @@
     <nav class="navbar">
       <ul class="navbar-nav">
         <li><router-link to="/">Home</router-link></li>
-        <li><a href="#">Blogs</a></li>
-        <li><a href="#">Add New</a></li>
+        <li><router-link to="/admin/blogs">Blogs</router-link></li>
+        <li><router-link to="/admin/blogs/new">Add New</router-link></li>
       </ul>
     </nav>
   </div>
@@ -17,14 +17,14 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  background-color: #39495C;
+  background-color: $vue-gray;
   overflow: hidden;
   height: 63px;
 
   a {
     float: left;
     display: block;
-    color: #64B587;
+    color: $vue-green;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

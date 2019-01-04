@@ -35,10 +35,21 @@ export default new Router({
       component: () => import('./views/Contact.vue')
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      meta: { layout: "admin"},
-      component: () => import('./views/Admin/Dashboard.vue')
+      path: '/admin',
+      name: 'admin',
+      component: () => import('./views/Admin/Admin.vue'),
+      children: [
+        {
+          path: 'blogs',
+          meta: { layout: "admin"},
+          component: () => import('./components/Admin/AdminBlogs.vue')
+        },
+        {
+          path: 'blogs/new',
+          meta: { layout: "admin"},
+          component: () => import('./components/Admin/AdminBlogNew.vue')
+        }
+      ]
     },
     {
       path: "*",

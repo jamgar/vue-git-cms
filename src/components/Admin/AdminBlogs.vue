@@ -1,14 +1,14 @@
 <template>
-  <div class="dashboard">
-    <blog v-for="(blog, idx) in blogs" :blog="blog" :key="idx"></blog>
+  <div class="blogs">
+    <admin-blog v-for="(blog, idx) in blogs" :blog="blog" :key="idx"></admin-blog>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import * as types from '../../store/types'
+import * as types from '../../store/types.js'
 
-import Blog from '../../components/Admin/Blog'
+import AdminBlog from './AdminBlog'
 
 export default {
   computed: {
@@ -17,16 +17,17 @@ export default {
     })
   },
   components: {
-    Blog
+    AdminBlog
   }
 }
 </script>
 
 <style lang="scss">
-.dashboard {
+.blogs {
   display: flex;
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 </style>

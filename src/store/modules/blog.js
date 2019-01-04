@@ -43,6 +43,18 @@ const mutations = {
   },
   [types.SET_EDITTING]: (state) => {
     state.isEditing = !state.isEditing
+  },
+  [types.UPDATE_TITLE]: (state, title) => {
+    state.blog.title = title
+  },
+  [types.UPDATE_TAG]: (state, tag) => {
+    state.blog.tag = tag
+  },
+  [types.UPDATE_PUBLISH_DATE]: (state, publish_date) => {
+    state.blog.publish_date = publish_date
+  },
+  [types.UPDATE_BODY]: (state, body) => {
+    state.blog.body = body
   }
 }
 

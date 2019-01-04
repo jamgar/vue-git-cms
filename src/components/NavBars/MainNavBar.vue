@@ -17,7 +17,7 @@
         <li><a href="#">Services</a></li>
         <li><a href="#">Blogs</a></li>
         <li><a href="#">Contact</a></li>
-        <li><router-link to="/dashboard">Admin</router-link></li>
+        <li><router-link to="/admin/blogs">Admin</router-link></li>
       </ul>
     </nav>
 
@@ -28,7 +28,7 @@
       <a href="#">Services</a>
       <a href="#">Blogs</a>
       <a href="#">Contact</a>
-      <router-link to="/dashboard">Admin</router-link>
+      <router-link to="/admin">Admin</router-link>
     </div>
   </div>
 </template>
@@ -48,14 +48,14 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  background-color: #39495C;
+  background-color: $vue-gray;
   overflow: hidden;
   height: 63px;
 
   a {
     float: left;
     display: block;
-    color: #64B587;
+    color: $vue-green;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

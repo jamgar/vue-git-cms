@@ -1,5 +1,7 @@
 # vue-git-cms
 
+This is a website and cms built with Vue. It inspired by [NetlifyCMS](https://www.netlifycms.org/).
+
 ## Project setup
 ```
 yarn install

@@ -10,6 +10,7 @@
   "dependencies": {
     "normalize-scss": "^7.0.1",
     "vue": "^2.5.21",
+    "vue-feather-icons": "^4.7.1",
     "vue-inscrybmde": "^0.1.3",
     "vue-router": "^3.0.1",
     "vue-showdown": "^2.3.0",
