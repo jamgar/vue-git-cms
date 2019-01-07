@@ -19,13 +19,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  // .container__content {
-  //   overflow: auto;
-  //   padding: 20px;
-  //   max-height: 100vh;
-  //   width: 100%;
-  // }
-
-</style>

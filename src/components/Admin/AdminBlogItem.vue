@@ -5,29 +5,53 @@
       <small>Published Date: {{blog.publish_date}}</small>
     </div>
     <div class="card__content">
-      <p>{{blog.body}}</p>
+      <p>{{truncateBody}}</p>
     </div>
     <div class="card_actions">
-      <edit-3-icon class="icon icon--info"></edit-3-icon>
-      <trash-2-icon class="icon icon--danger"></trash-2-icon>
+      <edit-3-icon class="icon icon--info" @click="editBlog"></edit-3-icon>
+      <trash-2-icon class="icon icon--danger" @click="deleteBlog"></trash-2-icon>
     </div>
   </div>
 </template>
 
 <script>
+import { VueShowdown } from 'vue-showdown'
 import { Edit3Icon, Trash2Icon } from 'vue-feather-icons'
+import { SET_BLOG, SET_EDITING } from '../../store/types'
+import { utilities } from '../../_helpers/'
 
 export default {
   props: ['blog'],
+  computed: {
+    truncateBody() {
+      return utilities.truncate(this.blog.body, 10, '...')
+    }
+  },
+  methods: {
+    editBlog() {
+      this.$store.commit(SET_EDITING, true)
+      this.$store.commit(SET_BLOG, this.blog.id)
+      this.$router.push({name: 'blogEdit', params: {id: this.blog.id}})
+    },
+    deleteBlog() {
+      if (confirm("Are you sure?")) {
+        this.$store.dispatch('deleteBlog', this.blog.id)
+      } else {
+        console.log('Cancel delete...');
+      }
+    }
+  },
   components: {
     Edit3Icon,
-    Trash2Icon
+    Trash2Icon,
+    VueShowdown
   }
 }
 </script>
 
 <style lang="scss">
 .card {
+  border-radius: 5px;
   box-shadow: 1px 4px 10px 1px rgba(82,82,82,0.50);
   height: 200px;
   margin: 10px;

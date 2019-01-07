@@ -1,6 +1,7 @@
 <template>
   <div id="admin-blog-new">
     <div class="container__content">
+      <h2 class="text-center">{{ isEditing ? 'EDIT ' : 'ADD ' }}BLOG</h2>
       <admin-blog-form @saveBlog="saveBlog" :blog="blog" />
     </div>
     <div class="container__content">
@@ -11,6 +12,8 @@
 
 <script>
 import { mapState } from 'vuex'
+
+import { SET_EDITING } from '../../store/types'
 
 import AdminBlogForm from './AdminBlogForm'
 import AdminBlogPreview from './AdminBlogPreview'
@@ -23,19 +26,27 @@ export default {
     })
   },
   methods: {
-    saveBlog(blog) {
+    saveBlog() {
       if (!this.isEditing) {
-        this.$store.dispatch('addBlog', blog)
+        this.$store.dispatch('addBlog').then(() => {
+          this.$store.dispatch('resetBlog')
+        })
       } else {
-        // Update post
-        this.$store.dispatch('editBlog', this.blog)
+        this.$store.dispatch('editBlog', this.blog).then(() => {
+          this.$store.dispatch('resetBlog')
+        })
       }
+      this.$router.push('/admin/blogs')
     },
     handleCancel() {
       console.log('cancelling...');
-      // Set isEditing to false
-      // ?? may have to reset state.post
+      this.$store.dispatch('resetBlog')
     }
+  },
+  beforeRouteLeave (to, from, next) {
+    this.$store.dispatch('resetBlog')
+    this.$store.commit(SET_EDITING)
+    next()
   },
   components: {
     AdminBlogForm,
@@ -54,5 +65,8 @@ export default {
   padding: 20px;
   max-height: 100vh;
   width: 100%;
+}
+.text-center{
+  text-align: center;
 }
 </style>

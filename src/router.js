@@ -25,6 +25,11 @@ export default new Router({
       component: () => import('./views/Blogs.vue')
     },
     {
+      path: '/blogs/:id',
+      name: 'blogShow',
+      component: () => import('./components/BlogShow.vue')
+    },
+    {
       path: '/services',
       name: 'services',
       component: () => import('./views/Services.vue')
@@ -46,8 +51,15 @@ export default new Router({
         },
         {
           path: 'blogs/new',
+          name: 'blogNew',
           meta: { layout: "admin"},
-          component: () => import('./components/Admin/AdminBlogNew.vue')
+          component: () => import('./components/Admin/AdminBlogEditor.vue')
+        },
+        {
+          path: 'blogs/edit/:id',
+          name: 'blogEdit',
+          meta: { layout: "admin"},
+          component: () => import('./components/Admin/AdminBlogEditor.vue')
         }
       ]
     },

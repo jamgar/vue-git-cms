@@ -1,6 +1,6 @@
 <template>
   <div class="blogs">
-    <admin-blog v-for="(blog, idx) in blogs" :blog="blog" :key="idx"></admin-blog>
+    <admin-blog-item v-for="(blog, idx) in blogs" :blog="blog" :key="idx"></admin-blog-item>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { mapGetters } from 'vuex'
 import * as types from '../../store/types.js'
 
-import AdminBlog from './AdminBlog'
+import AdminBlogItem from './AdminBlogItem'
 
 export default {
   computed: {
@@ -17,7 +17,7 @@ export default {
     })
   },
   components: {
-    AdminBlog
+    AdminBlogItem
   }
 }
 </script>
