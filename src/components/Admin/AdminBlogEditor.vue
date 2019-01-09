@@ -26,9 +26,9 @@ export default {
     })
   },
   methods: {
-    saveBlog() {
+    saveBlog(blog) {
       if (!this.isEditing) {
-        this.$store.dispatch('addBlog').then(() => {
+        this.$store.dispatch('addBlog', blog).then(() => {
           this.$store.dispatch('resetBlog')
         })
       } else {
@@ -65,8 +65,5 @@ export default {
   padding: 20px;
   max-height: 100vh;
   width: 100%;
-}
-.text-center{
-  text-align: center;
 }
 </style>

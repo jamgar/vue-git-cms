@@ -3,17 +3,18 @@ import * as types from '../types'
 const state = {
   isEditing: false,
   blog: {
+    id: '',
     title: '',
     tags: '',
     publish_date: '',
     body: ''
   },
   blogs: [
-    {"id": 1, "title": "Blog1", "tags": "tag1", "publish_date": '01-12-2018', "body": "Body of blog1"},
-    {"id": 2, "title": "Blog2", "tags": "tag1", "publish_date": '01-13-2018', "body": "Body of blog2"},
-    {"id": 3, "title": "Blog3", "tags": "tag1", "publish_date": '01-14-2018', "body": "Body of blog3"},
-    {"id": 4, "title": "Blog4", "tags": "tag1", "publish_date": '01-15-2018', "body": "Body of blog4"},
-    {"id": 5, "title": "Blog5", "tags": "tag1", "publish_date": '01-16-2018', "body": "Body of blog5"}
+    {"id": 1, "title": "Blog1", "tags": ["tag1", "tag2"], "publish_date": '01-12-2018', "body": "Body of blog1"},
+    {"id": 2, "title": "Blog2", "tags": ["tag2"], "publish_date": '01-13-2018', "body": "Body of blog2"},
+    {"id": 3, "title": "Blog3", "tags": ["tag3"], "publish_date": '01-14-2018', "body": "Body of blog3"},
+    {"id": 4, "title": "Blog4", "tags": ["tag4"], "publish_date": '01-15-2018', "body": "Body of blog4"},
+    {"id": 5, "title": "Blog5", "tags": ["tag5"], "publish_date": '01-16-2018', "body": "Body of blog5"}
   ],
 }
 
@@ -29,6 +30,7 @@ const getters = {
 
 const mutations = {
   [types.ADD_BLOG]: (state, payload) => {
+    console.log('ADD_BLOG', payload);
     payload["id"] = state.blogs.length + 1
     state.blogs.push(payload)
   },
@@ -42,6 +44,7 @@ const mutations = {
   },
   [types.RESET_BLOG]: (state) => {
     state.blog = Object.assign({}, state.blog, {
+      id: '',
       title: '',
       tags: '',
       publish_date: '',
@@ -70,9 +73,9 @@ const mutations = {
 }
 
 const actions = {
-  addBlog: ({commit}) => {
+  addBlog: ({commit}, payload) => {
     // Send Post to API
-    commit(types.ADD_BLOG, state.blog)
+    commit(types.ADD_BLOG, payload)
   },
   editBlog: ({commit}, payload) => {
     // Send Put to API

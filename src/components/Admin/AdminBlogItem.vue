@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card__title">
       <h3>{{blog.title}}</h3>
-      <small>Published Date: {{blog.publish_date}}</small>
+      <small>Published Date: {{formattedDate}}</small>
     </div>
     <div class="card__content">
       <p>{{truncateBody}}</p>
@@ -16,6 +16,7 @@
 
 <script>
 import { VueShowdown } from 'vue-showdown'
+import moment from 'moment'
 import { Edit3Icon, Trash2Icon } from 'vue-feather-icons'
 import { SET_BLOG, SET_EDITING } from '../../store/types'
 import { utilities } from '../../_helpers/'
@@ -25,6 +26,12 @@ export default {
   computed: {
     truncateBody() {
       return utilities.truncate(this.blog.body, 10, '...')
+    },
+    formattedDate() {
+      if (this.blog.publish_date) {
+        return moment(new Date(this.blog.publish_date)).format('MMMM Do, YYYY')
+      }
+      return ""
     }
   },
   methods: {
@@ -53,7 +60,7 @@ export default {
 .card {
   border-radius: 5px;
   box-shadow: 1px 4px 10px 1px rgba(82,82,82,0.50);
-  height: 200px;
+  height: 250px;
   margin: 10px;
   text-align: center;
   transition: .5s;

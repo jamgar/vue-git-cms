@@ -1,7 +1,7 @@
 <template>
   <div id="default-layout">
     <main-nav-bar/>
-    <div class="container">
+    <div class="container container--lg">
       <slot></slot>
     </div>
   </div>

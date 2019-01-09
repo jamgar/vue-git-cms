@@ -15,7 +15,7 @@
         <li><router-link to="/">Home</router-link></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Services</a></li>
-        <li><a href="/blogs">Blogs</a></li>
+        <li><router-link to="/blogs">Blogs</router-link></li>
         <li><a href="#">Contact</a></li>
         <li><router-link to="/admin/blogs">Admin</router-link></li>
       </ul>
@@ -23,10 +23,10 @@
 
     <div id="side-menu" class="side-nav">
       <a href="#" class="btn-close" @click="closeSideMenu">&times;</a>
-      <a href="#">Home</a>
+      <router-link to="/">Home</router-link>
       <a href="#">About</a>
       <a href="#">Services</a>
-      <a href="#">Blogs</a>
+      <router-link to="/blogs">Blogs</router-link>
       <a href="#">Contact</a>
       <router-link to="/admin">Admin</router-link>
     </div>

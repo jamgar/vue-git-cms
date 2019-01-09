@@ -1,7 +1,7 @@
 <template>
   <div id="admin-layout">
     <admin-nav-bar/>
-    <div class="container">
+    <div class="container container--lg">
       <slot></slot>
     </div>
   </div>

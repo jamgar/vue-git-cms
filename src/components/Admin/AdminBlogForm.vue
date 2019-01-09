@@ -89,7 +89,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit('saveBlog')
+      this.$emit('saveBlog', this.blog)
     },
     handleCancel() {
       console.log('cancelling...');
